@@ -36,11 +36,6 @@ class EM
     
     end
     
-    # Matrix operations
-    #def [](i, j); @z[i][j]; end
-    #def []=(i, j, val); @z[i][j] = val; end
-    #def inspect; @z.inspect; end
-
     def expectation()
       (0...@mu.length).each do |j|
         (0...@x.length).each do |i|
@@ -112,20 +107,15 @@ class EM
   
 end
 
-# add this function to load from file
 def in_from_file(path)
   arr = []
   arr = File.open(path).read.split.map{|s| s.to_f }
-  p "#{arr}  !!!! "
   return arr
 end
 
 
 if __FILE__ == $0
-  # Change this to be read from a file
-#  arr = [9, 10, 11, 20, 21, 22, 46, 49, 55, 57]
   arr = in_from_file('in.txt')
-
   (1..5).each do |k|
     p "Executing EM with K = #{k}"
     num_clusters = k
